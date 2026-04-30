@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actions Accessibles</title>
+    <link rel="stylesheet" href="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            background: var(--charbon);
+            background-image: var(--fond-drapeau);
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        body::before { display: none; }
+        .accueil-boite {
+            background: rgba(26, 24, 22, 0.94);
+            border-radius: 8px;
+            max-width: 780px;
+            width: 100%;
+            padding: 3rem 3rem 2.5rem;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.55);
+            position: relative;
+            z-index: 1;
+        }
+        .accueil-titre { font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.8rem); color: #ffffff; line-height: 1.05; margin-bottom: 0.5rem; }
+        .accueil-titre span { color: #f0c45a; display: block; }
+        .accueil-baseline { font-size: 1.05rem; color: #c8c8c0; margin-bottom: 2.5rem; line-height: 1.55; }
+        .profils { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+        .profil-carte { display: flex; flex-direction: column; gap: 0.65rem; padding: 1.75rem 1.5rem; border-radius: 6px; border: 2px solid transparent; text-decoration: none; transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s; }
+        .profil-carte:focus-visible { outline: 3px solid #f0c45a; outline-offset: 3px; }
+        .profil-participant { background: #1a4a80; color: #ffffff; }
+        .profil-participant:hover { border-color: #f0c45a; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+        .profil-orga { background: #8a2218; color: #ffffff; }
+        .profil-orga:hover { border-color: #f0c45a; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+        .profil-icone { width: 36px; height: 36px; opacity: 0.9; }
+        .profil-titre { font-size: 1.4rem; font-weight: 800; color: #ffffff; margin: 0; }
+        .profil-desc { font-size: 0.93rem; color: rgba(255,255,255,0.85); line-height: 1.5; flex: 1; }
+        .profil-cta { display: inline-block; font-weight: 700; font-size: 0.9rem; color: #f0c45a; margin-top: 0.25rem; }
+        .accueil-note { border: 1px solid rgba(255,255,255,0.15); border-radius: 5px; padding: 0.9rem 1.2rem; font-size: 0.88rem; color: #a8a8a0; line-height: 1.55; }
+        .accueil-note strong { color: #d8d8d0; }
+        .accueil-pied { text-align: center; margin-top: 1.5rem; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+        @media (max-width: 580px) { .accueil-boite { padding: 2rem 1.25rem 1.75rem; } .profils { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <main class="accueil-boite">
+        <h1 class="accueil-titre">Actions<span>Accessibles</span></h1>
+        <p class="accueil-baseline">Rien sur nous sans nous &mdash;<br>organisons ensemble des actions accessibles à toutes et tous.</p>
+        <nav aria-label="Choisir votre espace">
+            <div class="profils" role="list">
+                <a href="participant/index.html" class="profil-carte profil-participant" role="listitem" aria-describedby="desc-participant">
+                    <svg class="profil-icone" aria-hidden="true" focusable="false" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="18" cy="10" r="5" fill="rgba(255,255,255,0.9)"/>
+                        <path d="M8 30c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    </svg>
+                    <h2 class="profil-titre">Je participe</h2>
+                    <p class="profil-desc" id="desc-participant">Je vais assister à un événement et je veux signaler mes besoins d'accessibilité aux organisatrices et organisateurs.</p>
+                    <span class="profil-cta" aria-hidden="true">Signaler mes besoins &rarr;</span>
+                </a>
+                <a href="orga/index.html" class="profil-carte profil-orga" role="listitem" aria-describedby="desc-orga">
+                    <svg class="profil-icone" aria-hidden="true" focusable="false" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="8" width="24" height="20" rx="2" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" fill="none"/>
+                        <path d="M11 16h14M11 21h9" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M22 6v4M14 6v4" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    <h2 class="profil-titre">J'organise</h2>
+                    <p class="profil-desc" id="desc-orga">Je prépare un événement et je veux m'assurer qu'il soit accessible à toutes et tous.</p>
+                    <span class="profil-cta" aria-hidden="true">Accéder à la checklist &rarr;</span>
+                </a>
+            </div>
+        </nav>
+        <div class="accueil-note" role="note">
+            <strong>Pourquoi deux espaces séparés ?</strong>
+            Les besoins des participant·es et les tâches des organisatrices ne sont pas les mêmes. Chaque espace est pensé pour vous, sans information superflue.
+        </div>
+    </main>
+    <p class="accueil-pied">Rien sur nous sans nous &middot; Inspiré des ressources : Les Dévalideuses, Handinorme, On se capte et des nombreux retours militants &middot; Drapeau des Fiertés Handicapées : Ann Magill, domaine public &middot; Propulsé par Ti Racoon</p>
+    <script src="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.js" defer></script>
+</body>
+</html>

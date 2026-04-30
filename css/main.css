@@ -1,0 +1,156 @@
+/* ============================================================
+   ACTIONS ACCESSIBLES — main.css
+   Police : Lexend (lisibilite maximale)
+   Drapeau des Fiertes Handicapees (Ann Magill, 2021)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --charbon:      #3d3d3d;
+    --rouge:        #c8342a;
+    --or:           #c49a28;
+    --gris-drapeau: #d4d4d4;
+    --bleu:         #1a5fa0;
+    --vert:         #2a7a48;
+    --fond:         #f5f5f2;
+    --blanc:        #ffffff;
+    --noir-texte:   #1a1a1a;
+    --gris-bord:    #b0b0a8;
+    --gris-texte:   #4a4a42;
+    --gris-clair:   #ebebeb;
+    --font:         'Lexend', Arial, sans-serif;
+    --radius:       5px;
+    --ombre:        0 2px 12px rgba(0,0,0,0.10);
+    --ombre-m:      0 4px 24px rgba(0,0,0,0.16);
+    --fond-drapeau: linear-gradient(
+        135deg,
+        #3d3d3d 0%, #3d3d3d 14.28%,
+        #22c55e 14.28%, #22c55e 28.56%,
+        #3b82f6 28.56%, #3b82f6 42.84%,
+        #e8e8e8 42.84%, #e8e8e8 57.12%,
+        #fbbf24 57.12%, #fbbf24 71.4%,
+        #dc2626 71.4%, #dc2626 85.68%,
+        #3d3d3d 85.68%, #3d3d3d 100%
+    );
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--noir-texte);
+    background: var(--fond);
+    min-height: 100vh;
+}
+
+/* Fond drapeau subtil sur toutes les pages internes */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--fond-drapeau);
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+}
+
+:focus-visible { outline: 3px solid var(--bleu); outline-offset: 3px; border-radius: 2px; }
+
+h1, h2, h3, h4 { font-family: var(--font); line-height: 1.15; color: var(--noir-texte); font-weight: 800; }
+h1 { font-size: clamp(1.9rem, 4vw, 3rem); }
+h2 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+h4 { font-size: 1rem; font-weight: 700; }
+
+a { color: var(--bleu); text-decoration: underline; }
+a:hover { color: var(--noir-texte); }
+
+/* NAV */
+.nav-top {
+    background: var(--charbon);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 2rem;
+    gap: 1rem;
+    position: relative;
+    z-index: 10;
+}
+.nav-logo { font-family: var(--font); font-weight: 800; font-size: 1.1rem; color: #ffffff; text-decoration: none; }
+.nav-logo span { color: #f0c45a; }
+.nav-retour { font-size: 0.9rem; color: #d0d0d0; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s, color 0.15s; }
+.nav-retour:hover { color: #ffffff; border-bottom-color: #ffffff; }
+
+/* BOUTONS */
+.btn { display: inline-block; padding: 0.75rem 1.5rem; font-family: var(--font); font-weight: 700; font-size: 0.95rem; border: 2px solid transparent; border-radius: var(--radius); cursor: pointer; text-decoration: none; text-align: center; transition: background 0.15s, color 0.15s, border-color 0.15s; line-height: 1.3; }
+.btn-principal { background: var(--charbon); color: #fff; border-color: var(--charbon); }
+.btn-principal:hover, .btn-principal:focus-visible { background: var(--noir-texte); color: #fff; }
+.btn-vert { background: var(--vert); color: #fff; border-color: var(--vert); }
+.btn-vert:hover, .btn-vert:focus-visible { background: #1f5e36; color: #fff; }
+.btn-rouge { background: var(--rouge); color: #fff; border-color: var(--rouge); }
+.btn-rouge:hover, .btn-rouge:focus-visible { background: #a02820; color: #fff; }
+.btn-contour { background: transparent; color: var(--charbon); border-color: var(--charbon); }
+.btn-contour:hover, .btn-contour:focus-visible { background: var(--charbon); color: #fff; }
+.btn-pleine-largeur { width: 100%; padding: 1rem 1.5rem; }
+.btn-petit { padding: 0.45rem 0.9rem; font-size: 0.85rem; }
+
+/* FORMULAIRES */
+.form-groupe { margin-bottom: 1.4rem; }
+.form-label { display: block; font-weight: 600; margin-bottom: 0.4rem; color: var(--noir-texte); font-size: 0.95rem; }
+.form-indice { display: block; font-size: 0.82rem; color: var(--gris-texte); font-style: italic; margin-top: 0.2rem; }
+.form-groupe input[type="text"],
+.form-groupe input[type="email"],
+.form-groupe input[type="date"],
+.form-groupe textarea,
+.form-groupe select {
+    width: 100%; padding: 0.65rem 0.85rem; border: 2px solid var(--gris-bord); border-radius: var(--radius);
+    font-size: 1rem; font-family: var(--font); background: var(--blanc); color: var(--noir-texte);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.form-groupe input:focus, .form-groupe textarea:focus, .form-groupe select:focus {
+    outline: none; border-color: var(--bleu); box-shadow: 0 0 0 3px rgba(26,95,160,0.2);
+}
+.form-groupe textarea { resize: vertical; min-height: 85px; }
+
+/* FIELDSET */
+fieldset { border: 2px solid var(--gris-bord); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; background: var(--blanc); box-shadow: var(--ombre); position: relative; z-index: 1; }
+legend { font-family: var(--font); font-weight: 700; font-size: 1.05rem; padding: 0 0.4rem; color: var(--noir-texte); }
+.fieldset-desc { font-size: 0.87rem; color: var(--gris-texte); font-style: italic; margin: 0.3rem 0 0.8rem; }
+
+/* CASES */
+.cases-groupe { margin-top: 0.5rem; }
+.case-item { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.45rem 0.5rem; border-radius: 4px; margin-bottom: 0.2rem; transition: background 0.12s; }
+.case-item:hover { background: #ededea; }
+.case-item input[type="checkbox"], .case-item input[type="radio"] { width: 18px; height: 18px; flex-shrink: 0; margin-top: 0.15rem; cursor: pointer; accent-color: var(--bleu); }
+.case-item label { cursor: pointer; font-weight: 400; font-size: 0.97rem; line-height: 1.45; color: var(--noir-texte); }
+
+/* SELECTEUR ETAT */
+.select-etat { padding: 0.35rem 0.55rem; font-size: 0.83rem; border: 2px solid var(--gris-bord); border-radius: 4px; font-family: var(--font); background: var(--blanc); cursor: pointer; min-width: 145px; transition: border-color 0.15s; }
+.select-etat:focus { outline: none; border-color: var(--bleu); box-shadow: 0 0 0 3px rgba(26,95,160,0.2); }
+.select-etat[data-etat="non"]      { border-color: #c8342a; background: #fdf0ef; }
+.select-etat[data-etat="prevu"]    { border-color: #b08820; background: #fdf8e8; }
+.select-etat[data-etat="commande"] { border-color: #1a5fa0; background: #eef4fb; }
+.select-etat[data-etat="confirme"] { border-color: #2a7a48; background: #eef7f1; }
+.select-etat[data-etat="na"]       { border-color: var(--gris-bord); background: #f0f0ec; color: var(--gris-texte); }
+
+/* ALERTES */
+.alerte { padding: 0.9rem 1.1rem; border-radius: var(--radius); margin-bottom: 1.25rem; font-size: 0.95rem; border-left: 4px solid; position: relative; z-index: 1; }
+.alerte-info      { background: #eef4fb; border-color: var(--bleu); color: #0d3a6e; }
+.alerte-attention { background: #fdf8e8; border-color: var(--or);   color: #6b4e00; }
+.alerte-important { background: #fdf0ef; border-color: var(--rouge); color: #7a1a14; }
+.alerte-ok        { background: #eef7f1; border-color: var(--vert);  color: #144a28; }
+
+/* UTILITAIRES */
+.masque  { display: none !important; }
+.visible { display: block !important; }
+.requis  { color: var(--rouge); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+/* PIED DE PAGE */
+.pied-page { text-align: center; padding: 1.5rem; color: var(--gris-texte); font-size: 0.83rem; border-top: 1px solid var(--gris-bord); margin-top: 3rem; position: relative; z-index: 1; }
+
+@media (max-width: 640px) { .nav-top { padding: 0.75rem 1rem; } fieldset { padding: 1rem; } .btn { padding: 0.7rem 1.2rem; } }

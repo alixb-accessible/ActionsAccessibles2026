@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes besoins d'accessibilité — Actions Accessibles</title>
+    <link rel="stylesheet" href="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/participant.css">
+</head>
+<body>
+    <nav class="nav-top" aria-label="Navigation principale">
+        <a href="../index.html" class="nav-logo">Actions <span>Accessibles</span></a>
+        <a href="../index.html" class="nav-retour">&larr; Retour à l'accueil</a>
+    </nav>
+    <main id="contenu-principal" class="participant-contenu">
+        <div class="page-intro">
+            <h1>Signaler mes besoins d'accessibilité</h1>
+            <p>Indiquez vos besoins pour que les organisatrices et organisateurs puissent préparer l'événement au mieux. <strong>Tout est facultatif et confidentiel.</strong> Vous téléchargez votre document et l'envoyez vous-même aux orgas.</p>
+        </div>
+        <form id="form-besoins" novalidate>
+            <div class="form-groupe">
+                <label class="form-label" for="nom">Nom ou pseudo <span class="form-indice">Facultatif — vous pouvez rester anonyme</span></label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom, pseudo, ou rien du tout" autocomplete="nickname">
+            </div>
+            <fieldset>
+                <legend>Mobilité</legend>
+                <div class="cases-groupe">
+                    <div class="case-item"><input type="checkbox" id="mob1" name="mobilite" value="Fauteuil roulant manuel"><label for="mob1">Fauteuil roulant manuel</label></div>
+                    <div class="case-item"><input type="checkbox" id="mob2" name="mobilite" value="Fauteuil roulant électrique (besoin de recharge possible)"><label for="mob2">Fauteuil roulant électrique (besoin de recharge possible)</label></div>
+                    <div class="case-item"><input type="checkbox" id="mob3" name="mobilite" value="Déambulateur"><label for="mob3">Déambulateur</label></div>
+                    <div class="case-item"><input type="checkbox" id="mob4" name="mobilite" value="Canne ou béquilles"><label for="mob4">Canne(s) ou béquilles</label></div>
+                    <div class="case-item"><input type="checkbox" id="mob5" name="mobilite" value="Besoin de pauses fréquentes"><label for="mob5">Besoin de pauses fréquentes</label></div>
+                    <div class="case-item"><input type="checkbox" id="mob6" name="mobilite" value="Difficulté à rester debout longtemps"><label for="mob6">Difficulté à rester debout longtemps</label></div>
+                    <div class="case-item"><input type="checkbox" id="mob7" name="mobilite" value="Besoin de m'asseoir régulièrement"><label for="mob7">Besoin de m'asseoir régulièrement</label></div>
+                    <div class="case-item"><input type="checkbox" id="mob8" name="mobilite" value="Fatigue importante (maladie chronique, handicap invisible)"><label for="mob8">Fatigue importante (maladie chronique, handicap invisible)</label></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Appareillages et aides techniques</legend>
+                <div class="cases-groupe">
+                    <div class="case-item"><input type="checkbox" id="app1" name="appareillage" value="Appareil auditif — besoin d'une boucle magnétique"><label for="app1">Appareil auditif — besoin d'une boucle magnétique</label></div>
+                    <div class="case-item"><input type="checkbox" id="app2" name="appareillage" value="Besoin de recharger un appareillage électrique (fauteuil, implant cochléaire, autre)"><label for="app2">Besoin de recharger un appareillage électrique (fauteuil, implant cochléaire, autre)</label></div>
+                    <div class="case-item"><input type="checkbox" id="app3" name="appareillage" value="Chien guide ou chien d'assistance"><label for="app3">Chien guide ou chien d'assistance</label></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Sensoriel</legend>
+                <div class="cases-groupe">
+                    <div class="case-item"><input type="checkbox" id="sens1" name="sensoriel" value="Interprétation LSF (langue des signes française)"><label for="sens1">Interprétation LSF (langue des signes française)</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens2" name="sensoriel" value="Vélotypie (transcription écrite en direct)"><label for="sens2">Vélotypie (transcription écrite en direct)</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens3" name="sensoriel" value="Sous-titres pour les vidéos et prises de parole"><label for="sens3">Sous-titres pour les vidéos et prises de parole</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens4" name="sensoriel" value="Audiodescription"><label for="sens4">Audiodescription</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens5" name="sensoriel" value="Supports en braille"><label for="sens5">Supports en braille</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens6" name="sensoriel" value="Documents en FALC (Facile à Lire et à Comprendre)"><label for="sens6">Documents en FALC (Facile à Lire et à Comprendre)</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens7" name="sensoriel" value="Formats audio (documents lus à voix haute)"><label for="sens7">Formats audio (documents lus à voix haute)</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens8" name="sensoriel" value="Éclairage adapté (luminosité modérée, pas de néons agressifs)"><label for="sens8">Éclairage adapté (luminosité modérée, pas de néons agressifs)</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens9" name="sensoriel" value="Environnement peu bruyant"><label for="sens9">Environnement peu bruyant</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens10" name="sensoriel" value="Sensibilité aux odeurs fortes (parfums, produits chimiques)"><label for="sens10">Sensibilité aux odeurs fortes (parfums, produits chimiques)</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens11" name="sensoriel" value="Sensibilité aux stroboscopes et lumières clignotantes"><label for="sens11">Sensibilité aux stroboscopes et lumières clignotantes</label></div>
+                    <div class="case-item"><input type="checkbox" id="sens12" name="sensoriel" value="Besoin de casques anti-bruit (surcharge sensorielle)"><label for="sens12">Besoin de casques anti-bruit (surcharge sensorielle)</label></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Cognitif et neurodivergence</legend>
+                <div class="cases-groupe">
+                    <div class="case-item"><input type="checkbox" id="cog1" name="cognitif" value="Instructions claires et simples, sans jargon"><label for="cog1">Instructions claires et simples, sans jargon</label></div>
+                    <div class="case-item"><input type="checkbox" id="cog2" name="cognitif" value="Supports visuels (pictogrammes, schémas, plans du lieu)"><label for="cog2">Supports visuels (pictogrammes, schémas, plans du lieu)</label></div>
+                    <div class="case-item"><input type="checkbox" id="cog3" name="cognitif" value="Programme et horaires communiqués à l'avance"><label for="cog3">Programme et horaires communiqués à l'avance</label></div>
+                    <div class="case-item"><input type="checkbox" id="cog4" name="cognitif" value="Prévenir rapidement en cas de changements de planning"><label for="cog4">Prévenir rapidement en cas de changements de planning</label></div>
+                    <div class="case-item"><input type="checkbox" id="cog5" name="cognitif" value="Espace calme disponible pour se ressourcer"><label for="cog5">Espace calme disponible pour se ressourcer</label></div>
+                    <div class="case-item"><input type="checkbox" id="cog6" name="cognitif" value="Éviter les stimulations sensorielles excessives (bruit, foule, lumière)"><label for="cog6">Éviter les stimulations sensorielles excessives (bruit, foule, lumière)</label></div>
+                    <div class="case-item"><input type="checkbox" id="cog7" name="cognitif" value="Temps supplémentaire pour les échanges ou les décisions"><label for="cog7">Temps supplémentaire pour les échanges ou les décisions</label></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Santé et hygiène</legend>
+                <div class="cases-groupe">
+                    <div class="case-item"><input type="checkbox" id="san1" name="sante" value="Port du masque obligatoire dans mon environnement proche (immunodépression, maladie chronique)"><label for="san1">Port du masque obligatoire dans mon environnement proche <span class="form-indice">(immunodépression, maladie chronique)</span></label></div>
+                    <div class="case-item"><input type="checkbox" id="san2" name="sante" value="Environnement sans parfums ni produits chimiques forts"><label for="san2">Environnement sans parfums ni produits chimiques forts</label></div>
+                    <div class="case-item"><input type="checkbox" id="san3" name="sante" value="Espace fumeurs strictement séparé du groupe"><label for="san3">Espace fumeurs strictement séparé du groupe</label></div>
+                    <div class="case-item"><input type="checkbox" id="san4" name="sante" value="Aération régulière du lieu"><label for="san4">Aération régulière du lieu</label></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Accompagnement</legend>
+                <div class="cases-groupe">
+                    <div class="case-item"><input type="checkbox" id="acc1" name="accompagnement" value="Besoin d'un·e accompagnant·e humain·e"><label for="acc1">Besoin d'un·e accompagnant·e humain·e</label></div>
+                    <div class="case-item"><input type="checkbox" id="acc2" name="accompagnement" value="Besoin d'être accueilli·e dès l'arrivée par une personne référente, proche de l'entrée principale"><label for="acc2">Besoin d'être accueilli·e dès l'arrivée par une personne référente, proche de l'entrée principale</label></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Alimentation</legend>
+                <div class="form-groupe" style="margin-top:0.75rem">
+                    <label class="form-label" for="allergies">Allergies ou intolérances alimentaires</label>
+                    <textarea id="allergies" name="allergies" placeholder="Ex : gluten, lactose, fruits à coque, arachides…"></textarea>
+                </div>
+                <div class="cases-groupe">
+                    <div class="case-item"><input type="checkbox" id="alim1" name="alimentation" value="Besoin de pailles"><label for="alim1">Besoin de pailles</label></div>
+                    <div class="case-item"><input type="checkbox" id="alim2" name="alimentation" value="Composition des aliments à indiquer clairement (allergènes)"><label for="alim2">Composition des aliments à indiquer clairement (allergènes)</label></div>
+                </div>
+            </fieldset>
+            <div class="besoins-custom-section">
+                <h2>Besoins spécifiques supplémentaires</h2>
+                <p class="form-indice" style="margin-bottom:0.75rem">Ajoutez ici tout besoin qui ne figure pas dans les listes ci-dessus.</p>
+                <div id="liste-besoins-custom"></div>
+                <button type="button" class="btn btn-contour btn-petit" onclick="ajouterBesoinCustom()" style="margin-top:0.5rem">Ajouter un besoin</button>
+            </div>
+            <div class="form-groupe">
+                <label class="form-label" for="autres-besoins">Autres besoins ou précisions <span class="form-indice">Tout ce qui n'apparaît pas dans les listes ci-dessus, ou des précisions utiles</span></label>
+                <textarea id="autres-besoins" name="autres" placeholder="Décrivez librement…"></textarea>
+            </div>
+            <div class="actions-formulaire">
+                <button type="button" class="btn btn-principal btn-pleine-largeur" onclick="telechargerBesoins()">Télécharger mon document à envoyer aux orgas</button>
+                <p class="form-indice" style="text-align:center; margin-top:0.75rem;">Votre document ne sera pas envoyé automatiquement. Vous le téléchargez et l'envoyez vous-même aux organisatrices.</p>
+            </div>
+        </form>
+    </main>
+    <footer class="pied-page">
+        <p>Rien sur nous sans nous &middot; <a href="../index.html">Retour à l'accueil</a> &middot; Propulsé par Ti Racoon</p>
+    </footer>
+    <script src="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.js" defer></script>
+    <script src="../js/participant.js"></script>
+</body>
+</html>

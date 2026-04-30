@@ -1,0 +1,109 @@
+/* ============================================================
+   PARTICIPANT.CSS — styles specifiques espace participant
+   ============================================================ */
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--fond-drapeau);
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.participant-contenu {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.page-intro {
+    background: var(--bleu);
+    color: #ffffff;
+    padding: 1.75rem 2rem;
+    border-radius: 6px;
+    margin-bottom: 2.5rem;
+}
+
+.page-intro h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+}
+
+.page-intro p {
+    font-size: 0.97rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.92);
+}
+
+.page-intro strong { color: #ffffff; }
+
+.besoins-custom-section {
+    background: var(--blanc);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--gris-bord);
+    box-shadow: var(--ombre);
+    position: relative;
+    z-index: 1;
+}
+
+.besoins-custom-section h2 {
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+}
+
+.besoin-custom-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.besoin-custom-item input[type="text"] {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--gris-bord);
+    border-radius: 4px;
+    font-family: var(--font);
+    font-size: 0.95rem;
+    background: var(--blanc);
+    color: var(--noir-texte);
+}
+
+.btn-suppr-besoin {
+    background: none;
+    border: none;
+    color: var(--rouge);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 3px;
+    font-family: var(--font);
+    transition: background 0.12s;
+    line-height: 1;
+}
+
+.btn-suppr-besoin:hover { background: #fdf0ef; }
+.btn-suppr-besoin:focus-visible { outline: 3px solid var(--rouge); }
+
+.actions-formulaire {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--gris-bord);
+    position: relative;
+    z-index: 1;
+}
+
+fieldset { position: relative; z-index: 1; }
+
+@media (max-width: 580px) {
+    .participant-contenu { padding: 1.5rem 1rem 3rem; }
+    .page-intro { padding: 1.25rem; }
+}

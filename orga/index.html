@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace organisateur·ice — Actions Accessibles</title>
+    <link rel="stylesheet" href="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/orga.css">
+</head>
+<body>
+    <nav class="nav-top" aria-label="Navigation principale">
+        <a href="../index.html" class="nav-logo">Actions <span>Accessibles</span></a>
+        <a href="../index.html" class="nav-retour">&larr; Retour à l'accueil</a>
+    </nav>
+    <main id="contenu-principal">
+        <section class="connexion-section" id="section-connexion" aria-labelledby="titre-connexion">
+            <div class="connexion-boite">
+                <h1 id="titre-connexion">Espace organisateur·ice</h1>
+                <p class="connexion-desc">Gérez l'accessibilité de vos événements, suivez l'avancement de chaque point, générez vos annonces. Entrez votre email pour retrouver vos données sauvegardées sur cet appareil.</p>
+                <div class="alerte alerte-info" role="note">
+                    <strong>Confidentialité :</strong> vos données restent uniquement dans votre navigateur. Elles ne sont envoyées sur aucun serveur.
+                </div>
+                <div class="form-groupe">
+                    <label class="form-label" for="orga-email">Votre email</label>
+                    <input type="email" id="orga-email" placeholder="orga@collectif.org" autocomplete="email" aria-describedby="email-aide">
+                    <span class="form-indice" id="email-aide">Première visite ? Entrez votre email et commencez directement. Même email à chaque visite pour retrouver vos événements.</span>
+                </div>
+                <button class="btn btn-principal btn-pleine-largeur" onclick="connexion()" id="btn-connexion">Accéder à mon espace</button>
+            </div>
+        </section>
+        <section class="espace-orga masque" id="section-espace" aria-labelledby="titre-espace">
+            <div class="orga-barre-haut">
+                <div>
+                    <h1 id="titre-espace">Mes événements</h1>
+                    <p class="orga-email-affiche" id="orga-email-affiche" aria-live="polite"></p>
+                </div>
+                <div class="orga-barre-actions">
+                    <button class="btn btn-vert" onclick="afficherModalNouvel()">Créer un événement</button>
+                    <button class="btn btn-contour btn-petit" onclick="deconnexion()">Changer d'email</button>
+                </div>
+            </div>
+            <div id="liste-evenements" aria-live="polite" aria-label="Liste de vos événements"></div>
+        </section>
+    </main>
+    <div id="modal-nouvel" class="modal-fond masque" role="dialog" aria-modal="true" aria-labelledby="modal-titre">
+        <div class="modal-boite">
+            <h2 id="modal-titre">Créer un événement</h2>
+            <div class="form-groupe">
+                <label class="form-label" for="nouvel-titre">Nom de l'événement <span class="requis" aria-label="obligatoire">*</span></label>
+                <input type="text" id="nouvel-titre" placeholder="Ex : Réunion publique Bagnolet, Manif 1er mai…" autocomplete="off">
+            </div>
+            <div class="form-groupe">
+                <label class="form-label" for="nouvel-type">Type d'action <span class="requis" aria-label="obligatoire">*</span></label>
+                <select id="nouvel-type">
+                    <option value="">Sélectionner…</option>
+                    <option value="tractage">Tractage / collage</option>
+                    <option value="petit">Petit événement (atelier, réunion interne…)</option>
+                    <option value="reunion_publique">Réunion publique / AG / projection</option>
+                    <option value="conference">Conférence / journée d'étude</option>
+                    <option value="manif">Manifestation / cortège</option>
+                    <option value="grand">Grand événement (université d'été, festival…)</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+            <div class="form-groupe masque" id="nouvel-type-autre-groupe">
+                <label class="form-label" for="nouvel-type-autre">Précisez le type d'action</label>
+                <input type="text" id="nouvel-type-autre" placeholder="Ex : réunion Discord, balade militante…">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-vert" onclick="creerEvenement()">Créer</button>
+                <button class="btn btn-contour" onclick="fermerModal()">Annuler</button>
+            </div>
+        </div>
+    </div>
+    <footer class="pied-page">
+        <p>Rien sur nous sans nous &middot; <a href="../index.html">Retour à l'accueil</a> &middot; Propulsé par Ti Racoon</p>
+    </footer>
+    <script src="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.js" defer></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/orga-accueil.js"></script>
+</body>
+</html>

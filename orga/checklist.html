@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist accessibilité — Actions Accessibles</title>
+    <link rel="stylesheet" href="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/orga.css">
+</head>
+<body class="page-checklist">
+    <nav class="nav-top" aria-label="Navigation principale">
+        <a href="../index.html" class="nav-logo">Actions <span>Accessibles</span></a>
+        <a href="index.html" class="nav-retour" id="lien-retour">&larr; Mes événements</a>
+    </nav>
+    <div class="evenement-entete">
+        <h1 id="titre-evenement">Chargement…</h1>
+        <div class="meta-entete"><span id="meta-type"></span><span id="meta-lieu"></span></div>
+        <div class="prog-entete" aria-live="polite">
+            <div class="prog-barre" role="progressbar" id="prog-barre" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression">
+                <div class="prog-barre-inner" id="prog-barre-inner" style="width:0%"></div>
+            </div>
+            <span class="prog-texte" id="prog-texte">0 point confirmé</span>
+        </div>
+    </div>
+    <div class="onglets-barre" role="tablist" aria-label="Sections de la checklist">
+        <button class="onglet-btn" role="tab" aria-selected="true"  aria-controls="panneau-inclusion"     id="onglet-inclusion">Inclusion</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-lieu"          id="onglet-lieu">Lieu</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-cheminement"   id="onglet-cheminement">Cheminement</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-sensoriel"     id="onglet-sensoriel">Sensoriel</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-communication" id="onglet-communication">Communication</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-sante"         id="onglet-sante">Santé</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-manif"         id="onglet-manif">Cortège</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-reperage"      id="onglet-reperage">Repérage</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-custom"        id="onglet-custom">Aménagements</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-annonce"       id="onglet-annonce">Annonce</button>
+    </div>
+    <main id="contenu-principal">
+
+        <div id="panneau-inclusion" class="onglet-panneau actif" role="tabpanel" aria-labelledby="onglet-inclusion">
+            <div class="alerte alerte-info"><strong>L'accessibilité se construit avec les personnes concernées, pas pour elles.</strong> Cette section est la plus importante. Elle conditionne la qualité de toutes les autres.</div>
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Avant l'événement — impliquer les concernéEs <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps"><div id="items-inclusion"></div></div>
+            </div>
+        </div>
+
+        <div id="panneau-lieu" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-lieu">
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Informations générales <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps">
+                    <div class="form-groupe"><label class="form-label" for="champ-lieu">Nom et adresse du lieu</label><input type="text" id="champ-lieu" placeholder="Ex : Maison des associations, 12 rue Victor Hugo, Lyon" onchange="sauvegarderChamp('lieu', this.value)"></div>
+                    <div class="form-groupe"><label class="form-label" for="champ-etage">Étage / niveau</label><input type="text" id="champ-etage" placeholder="Ex : Rez-de-chaussée, 2ème étage sans ascenseur…" onchange="sauvegarderChamp('etage', this.value)"></div>
+                    <div class="form-groupe"><label class="form-label" for="champ-date">Date de l'événement</label><input type="date" id="champ-date" onchange="sauvegarderChamp('date', this.value)"></div>
+                    <div class="form-groupe"><label class="form-label" for="champ-contact">Contact accessibilité <span class="form-indice">Email ou téléphone à communiquer aux participant·es</span></label><input type="text" id="champ-contact" placeholder="Ex : accessibilite@collectif.org ou 06 12 34 56 78" onchange="sauvegarderChamp('contact', this.value)"></div>
+                    <div class="form-groupe"><label class="form-label" for="champ-referent">Personne référente accessibilité <span class="form-indice">Nom + contact direct, sera présente le jour J</span></label><input type="text" id="champ-referent" placeholder="Ex : Mariam Diallo — 06 12 34 56 78" onchange="sauvegarderChamp('referent', this.value)"></div>
+                </div>
+            </div>
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Accessibilité physique du lieu <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps"><div id="items-lieu"></div></div>
+            </div>
+        </div>
+
+        <div id="panneau-cheminement" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-cheminement">
+            <div class="alerte alerte-info">Décrivez comment on accède au lieu depuis les transports en commun ou le parking. Ces informations permettent aux participant·es de savoir si elles peuvent venir, avant même d'arriver.</div>
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Cheminement et accès <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps">
+                    <div id="items-cheminement"></div>
+                    <div class="form-groupe" style="margin-top:1rem">
+                        <label class="form-label" for="champ-cheminementLibre">Précisions complémentaires <span class="form-indice">Obstacles ponctuels, travaux, points de repère utiles…</span></label>
+                        <textarea id="champ-cheminementLibre" placeholder="Ex : travaux rue Gambetta jusqu'au 15 mai…" onchange="sauvegarderChamp('cheminementLibre', this.value)"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="panneau-sensoriel" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-sensoriel">
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Environnement sensoriel <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps"><div id="items-sensoriel"></div></div>
+            </div>
+        </div>
+
+        <div id="panneau-communication" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-communication">
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Accessibilité de la communication <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps"><div id="items-communication"></div></div>
+            </div>
+        </div>
+
+        <div id="panneau-sante" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-sante">
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Hygiène et santé <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps"><div id="items-sante"></div></div>
+            </div>
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Alimentation <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps"><div id="items-alimentation"></div></div>
+            </div>
+        </div>
+
+        <div id="panneau-manif" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-manif">
+            <div class="alerte alerte-info" id="alerte-non-manif">Cet onglet concerne les manifestations et cortèges. Il n'est pas pertinent pour votre type d'événement, mais vous pouvez l'utiliser si nécessaire.</div>
+            <div class="cl-section">
+                <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Organisation du cortège <span class="chevron" aria-hidden="true">&#9658;</span></button>
+                <div class="cl-section-corps">
+                    <div id="items-manif"></div>
+                    <div class="form-groupe" style="margin-top:1rem">
+                        <label class="form-label" for="champ-cortegeNote">Notes sur l'organisation du cortège <span class="form-indice">Rythme prévu, points de ralliement, pauses…</span></label>
+                        <textarea id="champ-cortegeNote" placeholder="Ex : pause toutes les 30 min…" onchange="sauvegarderChamp('cortegeNote', this.value)"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="panneau-reperage" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-reperage">
+            <div class="alerte alerte-info">Le repérage terrain est essentiel : il permet de confirmer ce que vous avez indiqué dans les autres onglets, et de proposer des photos aux participant·es qui souhaitent se faire une idée du lieu avant de venir.</div>
+            <div class="reperage-bloc">
+                <h2>Repérage effectué</h2>
+                <div class="cases-groupe"><div class="case-item"><input type="checkbox" id="reperage-fait" onchange="sauvegarderReperage('fait', this.checked)"><label for="reperage-fait">Visite de repérage effectuée</label></div></div>
+                <div class="form-groupe" style="margin-top:0.75rem"><label class="form-label" for="reperage-date">Date du repérage</label><input type="date" id="reperage-date" onchange="sauvegarderReperage('date', this.value)"></div>
+                <div class="form-groupe"><label class="form-label" for="reperage-par">Effectué par <span class="form-indice">Idéalement : au moins une personne concernée (handicapée)</span></label><input type="text" id="reperage-par" placeholder="Ex : Nadia (utilisatrice de fauteuil) + Yohan" onchange="sauvegarderReperage('par', this.value)"></div>
+            </div>
+            <div class="reperage-bloc">
+                <h2>Documentation visuelle</h2>
+                <div class="reperage-media-ligne">
+                    <button class="btn-media" id="btn-photos" onclick="toggleMedia('photos')" aria-pressed="false">Photos prises</button>
+                    <button class="btn-media" id="btn-video"  onclick="toggleMedia('video')"  aria-pressed="false">Vidéo prise</button>
+                </div>
+                <div class="form-groupe"><label class="form-label" for="reperage-media-lien">Lien vers les photos / vidéos <span class="form-indice">Drive, album partagé, etc.</span></label><input type="text" id="reperage-media-lien" placeholder="https://…" onchange="sauvegarderReperage('lien', this.value)"></div>
+                <div class="form-groupe"><label class="form-label" for="reperage-notes">Notes de repérage <span class="form-indice">Ce que vous avez observé, les points positifs, les difficultés</span></label><textarea id="reperage-notes" placeholder="Ex : la rampe d'accès est en bon état mais la porte est lourde…" onchange="sauvegarderReperage('notes', this.value)"></textarea></div>
+            </div>
+        </div>
+
+        <div id="panneau-custom" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-custom">
+            <div class="alerte alerte-info"><strong>Vous avez organisé une réunion préparatoire avec des personnes concernées ?</strong> Ajoutez ici les aménagements spécifiques qu'elles ont demandés, ou que vous souhaitez mettre en place et qui ne figurent pas dans les autres sections.</div>
+            <div id="liste-custom"></div>
+            <button class="btn btn-contour" onclick="ajouterAmenagement()" style="margin-top:0.5rem">Ajouter un aménagement</button>
+        </div>
+
+        <div id="panneau-annonce" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-annonce">
+            <div class="alerte alerte-info">Générez l'annonce d'accessibilité à copier dans votre communication. Elle sera mise à jour automatiquement à chaque fois que vous modifiez la checklist.</div>
+            <div class="annonce-actions" style="margin-bottom:1.25rem">
+                <button class="btn btn-vert" onclick="genererAnnonce()">Générer l'annonce</button>
+                <button class="btn btn-contour" onclick="copierAnnonce()" id="btn-copier" disabled>Copier l'annonce</button>
+                <button class="btn btn-contour" onclick="telechargerAnnonce()" id="btn-telecharger" disabled>Télécharger (.txt)</button>
+            </div>
+            <pre class="annonce-rendu" id="annonce-rendu" aria-live="polite" aria-label="Texte de l'annonce d'accessibilité">Cliquez sur « Générer l'annonce » pour produire le texte.</pre>
+        </div>
+
+    </main>
+    <footer class="pied-page">
+        <p>Rien sur nous sans nous &middot; <a href="index.html">Mes événements</a> &middot; <a href="../index.html">Accueil</a> &middot; Propulsé par Ti Racoon</p>
+    </footer>
+    <script src="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.js" defer></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/checklist-data.js"></script>
+    <script src="../js/checklist.js"></script>
+</body>
+</html>
