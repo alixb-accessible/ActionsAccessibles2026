@@ -7,6 +7,59 @@
     <link rel="stylesheet" href="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/orga.css">
+    <style>
+        .deadline-groupe {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.4rem;
+            flex-wrap: wrap;
+        }
+        .deadline-label {
+            font-size: 0.8rem;
+            color: var(--gris-texte);
+            white-space: nowrap;
+        }
+        .deadline-input {
+            padding: 0.2rem 0.4rem;
+            border: 1px solid var(--gris-bord);
+            border-radius: 4px;
+            font-family: var(--font);
+            font-size: 0.8rem;
+            background: var(--blanc);
+            color: var(--noir-texte);
+        }
+        .deadline-badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .deadline-vert   { background: #eef7f1; color: #1a5e36; border: 1px solid #2a7a48; }
+        .deadline-orange { background: #fff4e5; color: #8a4a00; border: 1px solid #e08000; }
+        .deadline-rouge  { background: #fdf0ef; color: #7a1a14; border: 1px solid #c8342a; }
+
+        .panneau-deadlines {
+            background: var(--blanc);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--ombre);
+        }
+        .deadlines-liste { margin-top: 0.75rem; }
+        .deadline-ligne {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0eb;
+            font-size: 0.88rem;
+            flex-wrap: wrap;
+        }
+        .deadline-ligne:last-child { border-bottom: none; }
+        .deadline-ligne-label { flex: 1; min-width: 200px; }
+    </style>
 </head>
 <body class="page-checklist">
     <nav class="nav-top" aria-label="Navigation principale">
@@ -33,7 +86,8 @@
         <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-manif"         id="onglet-manif">Cortège</button>
         <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-reperage"      id="onglet-reperage">Repérage</button>
         <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-custom"        id="onglet-custom">Aménagements</button>
-        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-annonce"       id="onglet-annonce">Annonce</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-deadlines"     id="onglet-deadlines">Deadlines</button>
+        <button class="onglet-btn" role="tab" aria-selected="false" aria-controls="panneau-recap"         id="onglet-recap">Récap</button>
     </div>
     <main id="contenu-principal">
 
@@ -63,7 +117,7 @@
         </div>
 
         <div id="panneau-cheminement" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-cheminement">
-            <div class="alerte alerte-info">Décrivez comment on accède au lieu depuis les transports en commun ou le parking. Ces informations permettent aux participant·es de savoir si elles peuvent venir, avant même d'arriver.</div>
+            <div class="alerte alerte-info">Décrivez comment on accède au lieu depuis les transports en commun ou le parking.</div>
             <div class="cl-section">
                 <button class="cl-section-titre" aria-expanded="true" onclick="toggleSection(this)">Cheminement et accès <span class="chevron" aria-hidden="true">&#9658;</span></button>
                 <div class="cl-section-corps">
@@ -130,7 +184,7 @@
                     <button class="btn-media" id="btn-video"  onclick="toggleMedia('video')"  aria-pressed="false">Vidéo prise</button>
                 </div>
                 <div class="form-groupe"><label class="form-label" for="reperage-media-lien">Lien vers les photos / vidéos <span class="form-indice">Drive, album partagé, etc.</span></label><input type="text" id="reperage-media-lien" placeholder="https://…" onchange="sauvegarderReperage('lien', this.value)"></div>
-                <div class="form-groupe"><label class="form-label" for="reperage-notes">Notes de repérage <span class="form-indice">Ce que vous avez observé, les points positifs, les difficultés</span></label><textarea id="reperage-notes" placeholder="Ex : la rampe d'accès est en bon état mais la porte est lourde…" onchange="sauvegarderReperage('notes', this.value)"></textarea></div>
+                <div class="form-groupe"><label class="form-label" for="reperage-notes">Notes de repérage</label><textarea id="reperage-notes" placeholder="Ex : la rampe d'accès est en bon état mais la porte est lourde…" onchange="sauvegarderReperage('notes', this.value)"></textarea></div>
             </div>
         </div>
 
@@ -140,14 +194,40 @@
             <button class="btn btn-contour" onclick="ajouterAmenagement()" style="margin-top:0.5rem">Ajouter un aménagement</button>
         </div>
 
-        <div id="panneau-annonce" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-annonce">
-            <div class="alerte alerte-info">Générez l'annonce d'accessibilité à copier dans votre communication. Elle sera mise à jour automatiquement à chaque fois que vous modifiez la checklist.</div>
+        <!-- ONGLET DEADLINES -->
+        <div id="panneau-deadlines" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-deadlines">
+            <div class="alerte alerte-info">
+                <strong>Suivez les échéances de chaque point d'accessibilité.</strong>
+                Assignez une date limite à chaque action depuis les autres onglets.
+                Les points sont colorés selon l'urgence :
+                <span style="color:#1a5e36;font-weight:700;">vert</span> (plus de 2 semaines),
+                <span style="color:#8a4a00;font-weight:700;">orange</span> (moins de 2 semaines),
+                <span style="color:#7a1a14;font-weight:700;">rouge</span> (moins de 3 jours ou dépassé).
+            </div>
+            <div class="panneau-deadlines">
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem;">
+                    <button class="btn btn-rouge btn-petit" onclick="envoyerAlertesMail()">Recevoir les alertes par mail</button>
+                </div>
+                <div class="deadlines-liste" id="deadlines-liste">
+                    <p style="color:var(--gris-texte);font-size:0.9rem;">Aucune deadline assignée pour l'instant. Ajoutez des dates depuis les autres onglets.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONGLET RECAP -->
+        <div id="panneau-recap" class="onglet-panneau" role="tabpanel" aria-labelledby="onglet-recap">
+            <div class="alerte alerte-info">
+                <strong>Récap de la checklist d'accessibilité.</strong>
+                Ce document liste tous les points confirmés, prévus ou en cours pour votre événement.
+                Il vous sert de repaire interne pour suivre l'avancement, et peut être partagé avec votre équipe ou les personnes concernées pour montrer ce qui a été prévu.
+                Il est mis à jour automatiquement à chaque modification de la checklist.
+            </div>
             <div class="annonce-actions" style="margin-bottom:1.25rem">
-                <button class="btn btn-vert" onclick="genererAnnonce()">Générer l'annonce</button>
-                <button class="btn btn-contour" onclick="copierAnnonce()" id="btn-copier" disabled>Copier l'annonce</button>
+                <button class="btn btn-vert" onclick="genererAnnonce()">Générer le récap</button>
+                <button class="btn btn-contour" onclick="copierAnnonce()" id="btn-copier" disabled>Copier le récap</button>
                 <button class="btn btn-contour" onclick="telechargerAnnonce()" id="btn-telecharger" disabled>Télécharger (.txt)</button>
             </div>
-            <pre class="annonce-rendu" id="annonce-rendu" aria-live="polite" aria-label="Texte de l'annonce d'accessibilité">Cliquez sur « Générer l'annonce » pour produire le texte.</pre>
+            <pre class="annonce-rendu" id="annonce-rendu" aria-live="polite" aria-label="Récap de la checklist d'accessibilité">Cliquez sur « Générer le récap » pour produire le document.</pre>
         </div>
 
     </main>
