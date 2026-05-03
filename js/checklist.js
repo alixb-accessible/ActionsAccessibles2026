@@ -415,7 +415,7 @@ function telechargerAnnonce() {
 function sauvegarderEvenement() { Storage.sauvegarderEvenement(emailOrga, evenement); }
 
 function labelType(type, typeAutre) {
-    const labels = { tractage:'Tractage / collage', petit:'Petit événement', reunion_publique:'Réunion publique / AG', conference:'Conférence / journée d\'étude', manif:'Manifestation / cortège', grand:'Grand événement', autre: typeAutre || 'Autre' };
+    const labels = { tractage:'Tractage / collage', petit:'Petit événement', reunion_publique:'Réunion publique / AG', conference:'Conférence / journée d’étude', manif:'Manifestation / cortège', grand:'Grand événement', autre: typeAutre || 'Autre' };
     return labels[type] || type;
 }
 
