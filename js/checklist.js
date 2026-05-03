@@ -71,7 +71,7 @@ function urgenceDeadline(dateStr) {
     const deadline = new Date(dateStr);
     const diff = Math.floor((deadline - maintenant) / (1000*60*60*24));
     if (diff < 0)  return { classe: 'deadline-rouge',  label: 'Dépassée !', diff };
-    if (diff <= 3) return { classe: 'deadline-rouge',  label: diff === 0 ? 'Aujourd'hui !' : 'Dans ' + diff + ' j', diff };
+    if (diff <= 3) return { classe: 'deadline-rouge',  label: diff === 0 ? "Aujourd'hui !" : 'Dans ' + diff + ' j', diff };
     if (diff <= 14) return { classe: 'deadline-orange', label: 'Dans ' + diff + ' j', diff };
     return { classe: 'deadline-vert', label: 'Dans ' + diff + ' j', diff };
 }
